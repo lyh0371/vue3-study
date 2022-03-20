@@ -1,0 +1,31 @@
+{
+  "name": "vue3-study",
+  "version": "1.0.0",
+  "description": "- 如果你想更加深入的了解 vue - 如果你想提高编写 vue 的效率 - 如果你想了解 vue 中各个模块的设计细节",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyh0371/vue3-study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lyh0371/vue3-study/issues"
+  },
+  "homepage": "https://github.com/lyh0371/vue3-study#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0"
+  }
+}
