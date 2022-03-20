@@ -4,7 +4,8 @@
   "description": "- 如果你想更加深入的了解 vue - 如果你想提高编写 vue 的效率 - 如果你想了解 vue 中各个模块的设计细节",
   "main": "index.js",
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "prepare": "husky install"
   },
   "config": {
     "commitizen": {
@@ -26,6 +27,7 @@
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "commitizen": "^4.2.4",
-    "cz-conventional-changelog": "^3.3.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^7.0.4"
   }
 }
