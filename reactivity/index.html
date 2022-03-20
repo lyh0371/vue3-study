@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>响应式模型实现</title>
+  </head>
+  <body>
+    <script>
+      let activeEffect;
+      let effects = new WeakMap();
+      let data = {
+        name: 'Vue',
+      };
+      const obj = new Proxy(data, {
+        get(target, key) {
+          let depsMap = effects.get(target);
+          if (!depsMap) {
+            effects.set(target, (depsMap = new Map()));
+          }
+          let deps = depsMap.get(key);
+          if (!deps) {
+            depsMap.set(key, (deps = new Set()));
+          }
+          if (activeEffect) {
+            deps.add(activeEffect);
+          }
+          return target[key];
+        },
+        set(target, key, val) {
+          target[key] = val;
+          const depsMap = effects.get(target);
+          if (depsMap) {
+            const effect = depsMap.get(key);
+            effect && effect.forEach((fn) => fn());
+          }
+        },
+      });
+      function effect(fn) {
+        activeEffect = fn;
+        fn();
+      }
+      effect(() => {
+        document.body.innerHTML = obj.name;
+        console.log(obj.name);
+      });
+      setTimeout(() => {
+        obj.name = '你好 Vue';
+      }, 2000);
+    </script>
+  </body>
+</html>
